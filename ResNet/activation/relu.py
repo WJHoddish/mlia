@@ -3,23 +3,34 @@ import numpy as np
 
 class ReLU:
     """
-    ReLU, the activation function.
+    Rectified Linear Unit (ReLU).
     """
 
     def __init__(self):
         self.x = None
-        self.y = None
-
-        self.eta = None  # dL/dx
 
     def forward(self, x):
-        self.x = x.copy
-        self.y = np.maximum(0, x)
+        """
+        phase1: make local x, y;
+        phase2: save data into object.
 
-        return self.y
+        :param x:
+        :return:
+        """
+
+        y = np.maximum(0.0, x)
+
+        self.x = x
+
+        return y
 
     def backward(self, eta):
-        self.eta = eta.copy()
-        self.eta[self.x < 0.0] = 0.0
+        """
 
-        return self.eta
+        :param eta: dL/da
+        :return:
+        """
+
+        eta[self.x < 0.0] = 0.0
+
+        return eta

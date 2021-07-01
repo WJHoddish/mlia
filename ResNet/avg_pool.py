@@ -1,0 +1,2 @@
+class AvgPool:
+    pass
